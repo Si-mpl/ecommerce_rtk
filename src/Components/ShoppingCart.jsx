@@ -12,7 +12,7 @@ const ShoppingCart = () => {
         dispatch(removeItemFromCart(itemId));
     };
     const handleClearCart = () => {
-        dispatch(clearCart);
+        dispatch(clearCart());
     };
 
     const handleIncreaseQuantity = itemId => {
@@ -30,9 +30,9 @@ const ShoppingCart = () => {
             <li key={item.id} className="cart-item">
                 <span>{item.name} - ${item.price}</span>
                 <div className="quantity-controls">
-                    <button onClick={() => decreaseItemQuantity(item.id)}>-</button>
+                    <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
                     <span> {item.quantity}</span>
-                    <button onClick={() => increaseItemQuantity(item.id)}>+</button>
+                    <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
                 </div>
                 <button className="remove-item-btn" onClick={() => handleRemoveItem(item.id)}>Remove</button>
             </li>
